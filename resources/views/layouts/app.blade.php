@@ -34,9 +34,11 @@
 
     </div>
     <!-- ./wrapper -->
+
     @include('layouts.footer')
     {{--java script and jquery--}}
     @include('layouts.footer-scripts')
+    @yield('js')
     </body>
 </html>
 

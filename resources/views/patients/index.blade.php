@@ -1,82 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
+{{--<!DOCTYPE html>--}}
+{{--<html lang="en">--}}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hospital System</title>
+{{--<head>--}}
+{{--    <meta charset="utf-8">--}}
+{{--    <meta name="viewport" content="width=device-width, initial-scale=1">--}}
+{{--    <title>Hospital System</title>--}}
 
-    @include('layouts.header')
-</head>
+{{--    @include('layouts.header')--}}
+{{--</head>--}}
 
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+{{--<body class="hold-transition sidebar-mini layout-fixed">--}}
+{{--<div class="wrapper">--}}
 
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{URL::asset('assets/dist/img/user8-128x128.jpg')}}" alt="AdminLTELogo" height="60" width="60">
-    </div>
+{{--    <!-- Preloader -->--}}
+{{--    <div class="preloader flex-column justify-content-center align-items-center">--}}
+{{--        <img class="animation__shake" src="{{URL::asset('assets/dist/img/user8-128x128.jpg')}}" alt="AdminLTELogo" height="60" width="60">--}}
+{{--    </div>--}}
 
-    @include('layouts.main-headerbar')
+{{--    @include('layouts.main-headerbar')--}}
 
-    @include('layouts.main-sidebar')
+{{--    @include('layouts.main-sidebar')--}}
 
-    <!-- Content Wrapper. Contains page content -->
+
+{{--    --}}
+{{--</div>--}}
+{{--<!-- ./wrapper -->--}}
+{{--@include('layouts.footer')--}}
+{{--java script and jquery--}}
+{{--@include('layouts.footer-scripts')--}}
+{{--    --}}
+{{--</body>--}}
+
+{{--</html>--}}
+
+
+@extends('layouts.app')
+@section('content')
+
+        <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-    <!-- /.card -->
-    <div class="card">
-        <div class="card-header">
-            <a href="{{route('patients.create')}}" type="button" class="btn btn-inline btn-primary btn-lg">Add Patient</a>
-        </div>
-        <!-- /.card-header -->
+        <!-- /.card -->
+        <div class="card">
+            <div class="card-header">
+                <a href="{{route('patients.create')}}" type="button" class="btn btn-inline btn-primary btn-lg">Add Patient</a>
+            </div>
+            <!-- /.card-header -->
 
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>الاسم</th>
-                    <th>السن</th>
-                    <th>النوع</th>
-                    <th>العنوان</th>
-                    <th>رقم الموبايل</th>
-                    @if(auth()->user()->role === 'admin')
-                    <th></th>
-                    @endif
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($patients as $patient)
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
                     <tr>
-                        <td>{{$patient->id}}</td>
-                        <td>{{$patient->Fname}}</td>
-                        <td>{{$patient->age}}</td>
-                        <td> {{$patient->gender}}</td>
-                        <td>{{$patient->address}}</td>
-                        <td>{{$patient->phone}}</td>
-
+                        <th>#</th>
+                        <th>الاسم</th>
+                        <th>السن</th>
+                        <th>النوع</th>
+                        <th>العنوان</th>
+                        <th>رقم الموبايل</th>
                         @if(auth()->user()->role === 'admin')
-                        <td>
-                            <a href="{{route('patients.edit' , $patient->id)}}" class="btn btn-success">Edit</a>
-{{--                            <a href="{{route('patients.destroy' , $patient->id)}}" class="btn btn-danger">Delete</a>--}}
-                            <a type="button"
-                               class="btn btn-danger"
-                               data-toggle="modal"
-                               data-target="#delete_patient"
-                               data-patient_id="{{$patient->id}}">Delete</a>
-
-                        </td>
+                            <th></th>
                         @endif
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-        <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
+                    </thead>
+                    <tbody>
+                    @foreach($patients as $patient)
+                        <tr>
+                            <td>{{$patient->id}}</td>
+                            <td>{{$patient->Fname}}</td>
+                            <td>{{$patient->age}}</td>
+                            <td> {{$patient->gender}}</td>
+                            <td>{{$patient->address}}</td>
+                            <td>{{$patient->phone}}</td>
 
-    {{--  Delete Patient  --}}
+                            @if(auth()->user()->role === 'admin')
+                                <td>
+                                    <a href="{{route('patients.edit' , $patient->id)}}" class="btn btn-success">Edit</a>
+                                    {{--                            <a href="{{route('patients.destroy' , $patient->id)}}" class="btn btn-danger">Delete</a>--}}
+                                    <a type="button"
+                                       class="btn btn-danger"
+                                       data-toggle="modal"
+                                       data-target="#delete_patient"
+                                       data-patient_id="{{$patient->id}}">Delete</a>
+
+                                </td>
+                            @endif
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+        {{--  Delete Patient  --}}
         {{--   Model     --}}
         <div class="modal fade" id="delete_patient">
             <div class="modal-dialog">
@@ -108,21 +124,19 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-</div>
-<!-- ./wrapper -->
-@include('layouts.footer')
-{{--java script and jquery--}}
-@include('layouts.footer-scripts')
-    <script>
-        $('#delete_patient').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var patient_id = button.data('patient_id')
-            var modal = $(this)
-            modal.find('.modal-body #id').val(patient_id);
-        })
+    </div>
 
-    </script>
-</body>
+@endsection
+@section('js')
 
-</html>
+<script>
+    $('#delete_patient').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var patient_id = button.data('patient_id')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(patient_id);
+    })
 
+</script>
+
+@endsection
