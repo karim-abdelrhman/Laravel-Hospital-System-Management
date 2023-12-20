@@ -1,38 +1,3 @@
-{{--<!DOCTYPE html>--}}
-{{--<html lang="en">--}}
-
-{{--<head>--}}
-{{--    <meta charset="utf-8">--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1">--}}
-{{--    <title>Hospital System</title>--}}
-
-{{--    @include('layouts.header')--}}
-{{--</head>--}}
-
-{{--<body class="hold-transition sidebar-mini layout-fixed">--}}
-{{--<div class="wrapper">--}}
-
-{{--    <!-- Preloader -->--}}
-{{--    <div class="preloader flex-column justify-content-center align-items-center">--}}
-{{--        <img class="animation__shake" src="{{URL::asset('assets/dist/img/user8-128x128.jpg')}}" alt="AdminLTELogo" height="60" width="60">--}}
-{{--    </div>--}}
-
-{{--    @include('layouts.main-headerbar')--}}
-
-{{--    @include('layouts.main-sidebar')--}}
-
-
-{{--    --}}
-{{--</div>--}}
-{{--<!-- ./wrapper -->--}}
-{{--@include('layouts.footer')--}}
-{{--java script and jquery--}}
-{{--@include('layouts.footer-scripts')--}}
-{{--    --}}
-{{--</body>--}}
-
-{{--</html>--}}
-
 
 @extends('layouts.app')
 @section('content')
