@@ -39,13 +39,13 @@
                 <li class="nav-header">Settings</li>
                 <li class="nav-item">
                     <a href="{{route('patients.index')}}" class="nav-link">
-                        <i class="nav-icon fa-solid fa-hospital-user"></i>
+                        <i class="nav-icon far fa-hospital"></i>
                         <p>Patients</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('users.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="nav-icon far fa-user"></i>
                         <p>
                             Users
                         </p>
