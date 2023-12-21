@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="{{URL::asset('assets/dist/img/user1-128x128.jpg')}}" alt="AdminLTELogo" height="60" width="60">
+        </div>
 
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -609,6 +615,7 @@
 
         </div>
 
+    </div>
 
 
 @endsection

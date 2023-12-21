@@ -16,28 +16,17 @@
         @include('layouts.header')
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
+    @include('layouts.main-headerbar')
 
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{URL::asset('assets/dist/img/user1-128x128.jpg')}}" alt="AdminLTELogo" height="60" width="60">
-        </div>
+    @include('layouts.main-sidebar')
 
-        @include('layouts.main-headerbar')
-
-        @include('layouts.main-sidebar')
-        <!-- Content Wrapper. Contains page content -->
-
-            @yield('content')
-
-    </div>
-
-    </div>
-    <!-- ./wrapper -->
+    @yield('content')
 
     @include('layouts.footer')
+
     {{--java script and jquery--}}
     @include('layouts.footer-scripts')
+
     @yield('js')
     </body>
 </html>

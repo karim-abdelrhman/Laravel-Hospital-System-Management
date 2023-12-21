@@ -55,6 +55,7 @@ class PatientController extends Controller
             'phone' => $request->phone,
         ]);
 
+        session()->flash('Add', 'تم اضافة المريض بنجاح');
         return redirect('/patients');
     }
 
